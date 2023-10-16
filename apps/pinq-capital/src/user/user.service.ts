@@ -1,15 +1,15 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { JwtService } from "@nestjs/jwt";
+import { ConfigService } from "@nestjs/config";
 
-import { User } from './entity/user.entity';
-import { OrganizationsService } from 'organizations/organizations.service';
-import { UserRole } from './entity/userrole.entity';
+import { User } from "./entity/user.entity";
+import { OrganizationsService } from "organizations/organizations.service";
+import { UserRole } from "./entity/userrole.entity";
 
-import { successResponse } from '../response-format/response'; // Replace with the actual path
-import { UserDataDTO } from 'organizations/dto/user-data.dto';
+import { successResponse } from "../response-format/response"; // Replace with the actual path
+// import { UserDataDTO } from "organizations/dto/user-data.dto";
 
 @Injectable()
 export class UserService {
@@ -31,7 +31,7 @@ export class UserService {
     });
 
     if (isUserExist) {
-      throw new HttpException('User already exist', HttpStatus.BAD_REQUEST);
+      throw new HttpException("User already exist", HttpStatus.BAD_REQUEST);
     }
     const role = await this.userRoleRepo.save({ name: roleName, access });
     const user = await this.userRepo.save(createUserByAdminDto);
@@ -39,7 +39,7 @@ export class UserService {
     user.organization = org;
     const updatedUser = await this.userRepo.save(user);
 
-    return successResponse('User created by admin', {
+    return successResponse("User created by admin", {
       user: updatedUser,
     });
   }
@@ -49,9 +49,9 @@ export class UserService {
 
     const token = await this.signToken(user.id, user.email);
 
-    return successResponse('User Signup successful', [
+    return successResponse("User Signup successful", [
       {
-        message: 'Redirect to Dashboard',
+        message: "Redirect to Dashboard",
         authToken: token,
       },
     ]);
@@ -74,9 +74,9 @@ export class UserService {
       userId: userId,
       email,
     };
-    const secret = this.configService.get<string>('JWT_SECRET_KEY');
+    const secret = this.configService.get<string>("JWT_SECRET_KEY");
     const token = await this.jwtService.signAsync(payload, {
-      expiresIn: '1h',
+      expiresIn: "1h",
       secret: secret,
     });
     return token;
