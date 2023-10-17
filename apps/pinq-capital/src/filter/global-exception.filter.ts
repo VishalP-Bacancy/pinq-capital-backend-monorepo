@@ -3,9 +3,9 @@ import {
   Catch,
   ExceptionFilter,
   HttpException,
-} from '@nestjs/common';
-import { Response } from 'express';
-import { ApiResponse } from '../response-format/response'; // Replace with the actual path
+} from "@nestjs/common";
+import { Response } from "express";
+import { ApiResponse } from "../response-format/response"; // Replace with the actual path
 
 @Catch()
 export class GlobalExceptionsFilter implements ExceptionFilter {
@@ -24,7 +24,7 @@ export class GlobalExceptionsFilter implements ExceptionFilter {
       console.log(exception);
       const errorResponseData: ApiResponse<any> = {
         status: false,
-        message: 'Internal server error',
+        message: "Internal server error",
         data: {},
       };
       response.status(500).json(errorResponseData);

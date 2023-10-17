@@ -21,22 +21,26 @@ export class AuthService {
   ): Promise<ApiResponse<SigninDto>> {
     const user = await this.userService.findUserByEmail(email);
 
+    if (!user) {
+      throw new HttpException("User not found!", HttpStatus.UNAUTHORIZED);
+    }
+
     if (!user.password) {
       const hashedPassword = await this.passwordService.hashPassword(password);
       user.password = hashedPassword;
       await this.userService.saveUser(user);
-    }
-
-    const isValid = await this.passwordService.comparePassword(
-      password,
-      user.password,
-    );
-
-    if (!isValid) {
-      throw new HttpException(
-        `The password doesn't match.`,
-        HttpStatus.UNAUTHORIZED,
+    } else {
+      const isValid = await this.passwordService.comparePassword(
+        password,
+        user.password,
       );
+
+      if (!isValid) {
+        throw new HttpException(
+          `The password doesn't match.`,
+          HttpStatus.UNAUTHORIZED,
+        );
+      }
     }
 
     const token = await this.userService.signToken(user.id, user.email);

@@ -7,11 +7,11 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
+} from "typeorm";
 
-import { UserRole } from './userrole.entity';
-import { Status, DEFAULT_STATUS } from '../user.constants'; // Adjust the path as needed
-import { Organization } from '../../organizations/entity/organizatons.entity';
+import { UserRole } from "./userrole.entity";
+import { Status, DEFAULT_STATUS } from "../user.constants"; // Adjust the path as needed
+import { Organization } from "../../organizations/entity/organizatons.entity";
 
 @Entity()
 export class User {
@@ -19,25 +19,25 @@ export class User {
   id: number;
 
   @ManyToOne(() => Organization, (organization) => organization.ownerId)
-  @JoinColumn({ name: 'orgId' })
+  @JoinColumn({ name: "orgId" })
   organization!: Organization;
 
-  @Column({ type: 'varchar', length: 30, default: null })
+  @Column({ type: "varchar", length: 30, default: null })
   email: string;
 
-  @Column({ type: 'varchar', length: 25, default: null })
+  @Column({ type: "varchar", length: 25, default: null })
   firstName: string;
 
-  @Column({ type: 'varchar', length: 25, default: null })
+  @Column({ type: "varchar", length: 25, default: null })
   lastName: string;
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ type: "varchar", nullable: true })
   password: string;
 
   @Column({ nullable: true, default: null })
   googleId: string;
 
-  @Column({ type: 'smallint', default: DEFAULT_STATUS })
+  @Column({ type: "smallint", default: DEFAULT_STATUS })
   status: Status;
 
   @Column({ nullable: true })
@@ -63,7 +63,7 @@ export class User {
 
   //user role's relation
   @OneToOne(() => UserRole)
-  @JoinColumn({ name: 'role' })
+  @JoinColumn({ name: "role" })
   role: string;
 
   @Column({ nullable: true })
@@ -90,26 +90,26 @@ export class User {
   @Column({ nullable: true, default: null })
   nextOnRotation: string;
 
-  @Column({ type: 'smallint', default: 0 })
+  @Column({ type: "smallint", default: 0 })
   isDeleted: number; // Use 'number' as the type since 'smallint' maps to a JavaScript number
 
   @CreateDateColumn({
-    type: 'datetime',
-    default: () => 'CURRENT_TIMESTAMP(6)',
+    type: "datetime",
+    default: () => "CURRENT_TIMESTAMP(6)",
   })
   createdAt: Date;
 
   @UpdateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+    onUpdate: "CURRENT_TIMESTAMP(6)",
   })
   lastLoginAt: Date;
 
   @UpdateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+    onUpdate: "CURRENT_TIMESTAMP(6)",
   })
   updatedAt: Date;
 }

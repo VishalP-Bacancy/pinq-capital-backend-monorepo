@@ -9,7 +9,7 @@ import { OrganizationsService } from "organizations/organizations.service";
 import { UserRole } from "./entity/userrole.entity";
 
 import { successResponse } from "../response-format/response"; // Replace with the actual path
-// import { UserDataDTO } from "organizations/dto/user-data.dto";
+import { UserDTO } from "./dto/user.dto";
 
 @Injectable()
 export class UserService {
@@ -61,11 +61,11 @@ export class UserService {
     return this.userRepo.findOne({ where: { email } });
   }
 
-  async findUserById(userId: number): Promise<User> {
+  async findUserById(userId: number): Promise<UserDTO> {
     return this.userRepo.findOne({ where: { id: userId } });
   }
 
-  async saveUser(userDto: any) {
+  async saveUser(userDto: UserDTO) {
     return this.userRepo.save(userDto);
   }
 
