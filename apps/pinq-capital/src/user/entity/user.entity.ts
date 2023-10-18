@@ -22,7 +22,7 @@ export class User {
   @JoinColumn({ name: "orgId" })
   organization!: Organization;
 
-  @Column({ type: "varchar", length: 30, default: null })
+  @Column({ type: "varchar", length: 50, default: null })
   email: string;
 
   @Column({ type: "varchar", length: 25, default: null })

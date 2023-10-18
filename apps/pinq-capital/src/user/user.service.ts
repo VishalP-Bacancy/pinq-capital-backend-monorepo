@@ -5,7 +5,7 @@ import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
 
 import { User } from "./entity/user.entity";
-import { OrganizationsService } from "organizations/organizations.service";
+import { OrganizationsService } from "../organizations/organizations.service";
 import { UserRole } from "./entity/userrole.entity";
 
 import { successResponse } from "../response-format/response"; // Replace with the actual path
