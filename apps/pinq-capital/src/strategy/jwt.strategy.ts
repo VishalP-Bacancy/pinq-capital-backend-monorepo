@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
@@ -21,6 +21,9 @@ export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
     if (!user) {
       return null;
     }
+    // if (user.authToken !== ExtractJwt.fromAuthHeaderAsBearerToken()) {
+    //   throw new HttpException('Token invalid', HttpStatus.FORBIDDEN)
+    // }
     return user;
   }
 }

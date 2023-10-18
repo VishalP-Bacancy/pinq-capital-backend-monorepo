@@ -44,17 +44,26 @@ export class UserService {
     });
   }
 
-  async userSignup(userDto: User) {
-    const user = await this.userRepo.save(userDto);
+  async updateUserProfile(userProfile: any, user: UserDTO) {
+    // const user = this.userRepo.findOne({ where: { email: user.email } });
+    const { fax, mobilePhone, workPhone, name, office, title } = userProfile;
+    const isExistsUser = await this.userRepo.findOne({
+      where: { email: user.email },
+    });
 
-    const token = await this.signToken(user.id, user.email);
+    if (!isExistsUser) {
+      throw new HttpException("User not found.", HttpStatus.UNAUTHORIZED);
+    }
 
-    return successResponse("User Signup successful", [
-      {
-        message: "Redirect to Dashboard",
-        authToken: token,
-      },
-    ]);
+    user.fax = fax;
+    user.mobilePhone = mobilePhone;
+    user.workPhone = workPhone;
+    user.name = name;
+    user.office = office;
+    user.title = title;
+
+    await this.saveUser(user);
+    return successResponse("User profile updated", {});
   }
 
   async findUserByEmail(email: string): Promise<User> {
