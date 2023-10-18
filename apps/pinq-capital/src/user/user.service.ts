@@ -10,6 +10,7 @@ import { UserRole } from "./entity/userrole.entity";
 
 import { successResponse } from "../response-format/response"; // Replace with the actual path
 import { UserDTO } from "./dto/user.dto";
+import { UserProfileDTO } from "./dto/user-profile.dto";
 
 @Injectable()
 export class UserService {
@@ -44,8 +45,7 @@ export class UserService {
     });
   }
 
-  async updateUserProfile(userProfile: any, user: UserDTO) {
-    // const user = this.userRepo.findOne({ where: { email: user.email } });
+  async updateUserProfile(userProfile: UserProfileDTO, user: UserDTO) {
     const { fax, mobilePhone, workPhone, name, office, title } = userProfile;
     const isExistsUser = await this.userRepo.findOne({
       where: { email: user.email },

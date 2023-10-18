@@ -4,6 +4,7 @@ import { JwtGuard } from "guards/jwt.guard";
 import { GetUser } from "decorators/get-user.decorator";
 import { UserDTO } from "./dto/user.dto";
 import { ApiTags } from "@nestjs/swagger";
+import { UserProfileDTO } from "./dto/user-profile.dto";
 
 @ApiTags("user-apis")
 @UseGuards(JwtGuard)
@@ -13,7 +14,7 @@ export class UserController {
 
   @Patch()
   // @HttpCode(204)
-  updateProfile(@Body() userProfile: any, @GetUser() user: UserDTO) {
+  updateProfile(@Body() userProfile: UserProfileDTO, @GetUser() user: UserDTO) {
     return this.userService.updateUserProfile(userProfile, user);
   }
 }
