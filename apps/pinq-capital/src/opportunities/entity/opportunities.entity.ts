@@ -1,5 +1,5 @@
-import { Accounts } from 'accounts/entity/accounts.entity';
-import { Contacts } from 'contacts/entity/contacts.entity';
+import { Accounts } from '../../accounts/entity/accounts.entity';
+import { Contacts } from '../../contacts/entity/contacts.entity';
 import {
   Entity,
   Column,

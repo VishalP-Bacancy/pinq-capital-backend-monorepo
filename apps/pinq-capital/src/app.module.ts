@@ -7,7 +7,7 @@ import { UserModule } from "./user/user.module";
 import { OrganizationsModule } from "./organizations/organizations.module";
 import { AuthModule } from "./auth/auth.module";
 import { UserService } from "./user/user.service";
-import { JwtStrategy } from "strategy/jwt.strategy";
+import { JwtStrategy } from "./strategy/jwt.strategy";
 import { JwtModule } from "@nestjs/jwt";
 import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import { APP_GUARD } from "@nestjs/core";

@@ -3,9 +3,9 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { User } from './entity/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { OrganizationsModule } from 'organizations/organizations.module';
+import { OrganizationsModule } from '../organizations/organizations.module';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtStrategy } from 'strategy/jwt.strategy';
+import { JwtStrategy } from '../strategy/jwt.strategy';
 import { UserRole } from './entity/userrole.entity';
 
 @Module({

@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 
 import { UserService } from "../user/user.service";
 import { OrganizationsService } from "../organizations/organizations.service";
-import { ApiResponse, successResponse } from "response-format/response";
+import { ApiResponse, successResponse } from "../response-format/response";
 import { PasswordService } from "./util/password.service";
 import { SigninDto } from "./dto/signin.dto";
 // import { SigninDto } from './dto/normal-signin.dto';

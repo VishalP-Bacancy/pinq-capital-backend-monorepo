@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { ApiTags } from '@nestjs/swagger';
 import { googleAuthResponseDto } from './dto/googleAuth.dto';
 import { SigninDto } from './dto/signin.dto';
-import { ApiResponse } from 'response-format/response';
+import { ApiResponse } from '../response-format/response';
 // import { Throttle } from '@nestjs/throttler';
 
 @ApiTags('auth-apis')
