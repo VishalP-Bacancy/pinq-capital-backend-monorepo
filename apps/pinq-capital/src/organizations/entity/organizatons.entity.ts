@@ -1,6 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Status, DEFAULT_STATUS } from '../organizations.constants'; // Adjust the path as needed
-import { User } from '../../user/entity/user.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Status, DEFAULT_STATUS } from "../organizations.constants"; // Adjust the path as needed
+import { User } from "../../user/entity/user.entity";
 
 @Entity()
 export class Organization {
@@ -10,7 +10,7 @@ export class Organization {
   @Column({ length: 100, unique: true })
   name: string;
 
-  @Column({ type: 'smallint', default: DEFAULT_STATUS })
+  @Column({ type: "smallint", default: DEFAULT_STATUS })
   isActive: Status;
 
   @Column({ length: 100 })

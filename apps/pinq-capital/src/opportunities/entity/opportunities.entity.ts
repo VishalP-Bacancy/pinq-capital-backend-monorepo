@@ -1,12 +1,12 @@
-import { Accounts } from '../../accounts/entity/accounts.entity';
-import { Contacts } from '../../contacts/entity/contacts.entity';
+import { Accounts } from "../../accounts/entity/accounts.entity";
+import { Contacts } from "../../contacts/entity/contacts.entity";
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
-} from 'typeorm';
+} from "typeorm";
 
 @Entity()
 export class Opportunities {
@@ -85,21 +85,21 @@ export class Opportunities {
   @Column({ nullable: true })
   followUpTime: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt: Date;
 
   @Column({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP',
-    onUpdate: 'CURRENT_TIMESTAMP',
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP",
+    onUpdate: "CURRENT_TIMESTAMP",
   })
   updatedAt: Date;
 
   @ManyToOne(() => Contacts, (contact) => contact.opportunities)
-  @JoinColumn({ name: 'contactId' })
+  @JoinColumn({ name: "contactId" })
   contact: Contacts;
 
   @ManyToOne(() => Accounts, (account) => account.opportunities)
-  @JoinColumn({ name: 'accountId' })
+  @JoinColumn({ name: "accountId" })
   account: Accounts;
 }

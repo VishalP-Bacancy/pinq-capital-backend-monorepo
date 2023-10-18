@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsEmail, IsString, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsEmail, IsString, IsOptional } from "class-validator";
 
 export class googleAuthResponseDto {
   @IsNotEmpty()
