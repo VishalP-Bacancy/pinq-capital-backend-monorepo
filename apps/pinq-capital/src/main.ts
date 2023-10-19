@@ -4,6 +4,7 @@ import { GlobalExceptionsFilter } from "./filter/global-exception.filter";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ConfigService } from "@nestjs/config";
 
+declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
@@ -27,6 +28,11 @@ async function bootstrap() {
     .setVersion("1.0")
     // .addTag('Bacancy') // Use the same tag as in @ApiTags
     .build();
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("swagger", app, document);
