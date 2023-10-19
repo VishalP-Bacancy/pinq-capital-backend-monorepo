@@ -22,7 +22,7 @@ import { RolesGuard } from "./guards/roles.guard";
     }),
     ThrottlerModule.forRoot([
       {
-        ttl: 10000, //milliseconds
+        ttl: 10000, //milliseconds  --> 10sec
         limit: 5,
       },
     ]),
