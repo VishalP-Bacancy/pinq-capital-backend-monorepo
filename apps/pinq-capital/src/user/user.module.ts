@@ -6,7 +6,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { OrganizationsModule } from "../organizations/organizations.module";
 import { JwtModule } from "@nestjs/jwt";
 import { JwtStrategy } from "../strategy/jwt.strategy";
-import { UserRole } from "./entity/userrole.entity";
+import { UserRole } from "./entity/user-role.entity";
 
 @Module({
   imports: [

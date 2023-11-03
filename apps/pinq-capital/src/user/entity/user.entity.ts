@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-import { UserRole } from "./userrole.entity";
+import { UserRole } from "./user-role.entity";
 import { Status, DEFAULT_STATUS } from "../user.constants"; // Adjust the path as needed
 import { Organization } from "../../organizations/entity/organizatons.entity";
 

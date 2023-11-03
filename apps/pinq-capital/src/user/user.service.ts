@@ -6,7 +6,7 @@ import { ConfigService } from "@nestjs/config";
 
 import { User } from "./entity/user.entity";
 import { OrganizationsService } from "../organizations/organizations.service";
-import { UserRole } from "./entity/userrole.entity";
+import { UserRole } from "./entity/user-role.entity";
 
 import { successResponse } from "../response-format/response"; // Replace with the actual path
 import { UserDTO } from "./dto/user.dto";
